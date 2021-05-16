@@ -1,2 +1,7 @@
-# notion-kanban-analytics
-🔍 Analyze Notion's kanban board with notion-py
+# notion-scrum-analytics
+🔍 Analyze Notion's scrum board with notion-py
+
+# Supported Feature
+- [x] Auto reset task card whose status from `doing` to `todo` daily 
+- [ ] Auto archive task card
+- [ ] Burn-down chart

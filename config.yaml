@@ -1,0 +1,16 @@
+SCRUM:
+  URL: 'https://www.notion.so/wormwlrm/bdac1d5eb89b433884c324b679ed7177?v=90e2216daf87410eb56dd319c4d82e33'
+  STEPS:
+    BACKLOG: '백로그'
+    TODO: '시작 전'
+    DOING: '진행 중'
+    DONE: '완료 🙌'
+    ARCHIVE: '아카이브'
+CARD:
+  STATUS: '상태'
+  FINISHED_AT: '완료일시'
+OPTIONS:
+  BACKLOG_ENABLED: False
+  ARCHIVE_ENABLED: False
+  AUTO_ARCHIVE: True
+  AUTO_DAILY_RESET: True
