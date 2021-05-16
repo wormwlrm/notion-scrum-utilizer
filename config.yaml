@@ -1,0 +1,11 @@
+SCRUM:
+  URL: 'https://www.notion.so/wormwlrm/bdac1d5eb89b433884c324b679ed7177?v=90e2216daf87410eb56dd319c4d82e33'
+  STATUS:
+    NAME: '상태'
+  STEPS:
+    TODO: '시작 전'
+    DOING: '진행 중'
+    DONE: '완료 🙌'
+OPTIONS:
+  AUTO_ARCHIVE: True
+  AUTO_DAILY_RESET: True
