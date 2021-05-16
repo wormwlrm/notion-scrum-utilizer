@@ -8,12 +8,10 @@ class Notion:
     client = None
     token = None
     conf = None
-    scrum = None
 
     def __init__(self):
         self.set_config()
         self.set_token()
-        self.set_scrum()
 
     def set_config(self):
         with open('config.yaml') as file:
@@ -24,6 +22,4 @@ class Notion:
         self.token = os.getenv('token_v2')
         self.client = NotionClient(token_v2=self.token)
 
-    def set_scrum(self):
-        url = self.conf['SCRUM']['URL']
-        self.scrum = self.client.get_collection_view(url)
+
