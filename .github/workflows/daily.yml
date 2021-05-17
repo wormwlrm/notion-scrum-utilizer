@@ -4,6 +4,7 @@ on:
   schedule:
     # 화요일~토요일 0시
     - cron: 0 15 * * 1-5
+  workflow_dispatch:
 
 jobs:
   build:
