@@ -18,9 +18,13 @@ class Notion:
             self.conf = yaml.load(file, Loader=yaml.BaseLoader)
 
     def set_token(self):
-        load_dotenv(verbose=True)
+        if (os.path.exists('.env')):
+            load_dotenv(verbose=True)
+
+        print('environ:', os.environ['TOKEN'])
+        print('getenv:', os.getenv('TOKEN'))
+
         self.token = os.environ['TOKEN']
-        print(self.token)
         self.client = NotionClient(token_v2=self.token)
 
 
