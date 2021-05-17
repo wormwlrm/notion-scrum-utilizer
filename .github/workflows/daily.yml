@@ -3,7 +3,7 @@ name: daily-cron
 on:
   schedule:
     # 화요일~토요일 0시
-    - cron: 30 15 * * 1-5
+    - cron: 0 15 * * 1-5
 
 jobs:
   build:
@@ -22,4 +22,4 @@ jobs:
       run: |
         python daily.py
       env:
-        token: ${{ secrets.token }}
+        TOKEN: ${{ secrets.TOKEN }}
