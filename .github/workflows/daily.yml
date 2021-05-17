@@ -5,6 +5,7 @@ on:
     # 화요일~토요일 0시
     - cron: 0 15 * * 1-5
   workflow_dispatch:
+    # 이 옵션을 설정해주어야 Github 웹에서 매뉴얼하게 실행 가능
 
 jobs:
   build:

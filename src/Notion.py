@@ -19,7 +19,7 @@ class Notion:
 
     def set_token(self):
         load_dotenv(verbose=True)
-        self.token = os.getenv('TOKEN')
+        self.token = os.environ['TOKEN']
         self.client = NotionClient(token_v2=self.token)
 
 
