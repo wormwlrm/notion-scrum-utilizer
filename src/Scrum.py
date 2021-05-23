@@ -9,7 +9,7 @@ class Scrum(Notion):
         self.set_scrum()
 
     def set_scrum(self):
-        url = self.conf['SCRUM']['URL']
+        url = self.conf["SCRUM"]["URL"]
         self.board = self.client.get_collection_view(url)
 
     def get_filtered_card_ids(self, key, value):

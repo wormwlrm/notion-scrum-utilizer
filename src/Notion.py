@@ -14,14 +14,12 @@ class Notion:
         self.set_token()
 
     def set_config(self):
-        with open('config.yaml') as file:
+        with open("config.yaml") as file:
             self.conf = yaml.load(file, Loader=yaml.BaseLoader)
 
     def set_token(self):
-        if (os.path.exists('.env')):
+        if os.path.exists(".env"):
             load_dotenv(verbose=True)
 
-        self.token = os.environ['TOKEN']
+        self.token = os.environ["TOKEN"]
         self.client = NotionClient(token_v2=self.token)
-
-
