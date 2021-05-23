@@ -21,9 +21,6 @@ class Notion:
         if (os.path.exists('.env')):
             load_dotenv(verbose=True)
 
-        print('environ:', os.environ['TOKEN'])
-        print('getenv:', os.getenv('TOKEN'))
-
         self.token = os.environ['TOKEN']
         self.client = NotionClient(token_v2=self.token)
 
