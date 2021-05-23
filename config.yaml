@@ -1,3 +1,4 @@
+# 스크럼, 칸반 보드 관련 설정
 SCRUM:
   URL: 'https://www.notion.so/wormwlrm/bdac1d5eb89b433884c324b679ed7177?v=90e2216daf87410eb56dd319c4d82e33'
   STEPS:
@@ -6,11 +7,19 @@ SCRUM:
     DOING: '진행 중'
     DONE: '완료 🙌'
     ARCHIVE: '아카이브'
+
+# 태스크 카드 관련 프로퍼티 설정
 CARD:
   STATUS: '상태'
-  FINISHED_AT: '완료일시'
+  DURATION: '작업기간'
+
+# 옵션 활성화 설정
 OPTIONS:
   BACKLOG_ENABLED: False
   ARCHIVE_ENABLED: False
+
   AUTO_ARCHIVE: True
+  # 매일 자정에 DOING 상태의 카드를 TODO로 이동시킴
   AUTO_DAILY_RESET: True
+  # 매일 자정에 DOING 상태와 DONE 상태의 카드의 진행 기간을 기록함 
+  AUTO_UPDATE_DURATION: True
