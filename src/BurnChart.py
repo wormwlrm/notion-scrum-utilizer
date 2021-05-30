@@ -72,5 +72,4 @@ class BurnChart(Notion):
         date_format = mdates.DateFormatter("%m-%d")
         axes.xaxis.set_major_formatter(date_format)
 
-        # plt.show()
-        plt.savefig("savefig_default.png")
+        plt.savefig("burnchart.png")

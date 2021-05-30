@@ -24,4 +24,5 @@ jobs:
       run: |
         python daily.py
       env:
-        TOKEN: ${{ secrets.TOKEN }}
+        NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}

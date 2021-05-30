@@ -24,3 +24,8 @@ OPTIONS:
   AUTO_DAILY_RESET: True
   # 매일 자정에 DOING 상태와 DONE 상태의 카드의 진행 기간을 기록함 
   AUTO_UPDATE_DURATION: True
+
+# 슬랙 관련 설정
+SLACK:
+  CHANNEL_NAME: '#슬랙-봇-테스트'
+
