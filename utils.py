@@ -2,8 +2,8 @@ import pandas as pd
 from datetime import date, timedelta
 
 
-def get_time_series(day=date.today(), periods=7, revision=1, freq="D"):
-    return pd.date_range(day, periods=periods + revision, freq=freq).to_series()
+def get_time_series(start, week=1, revision=1, freq="D"):
+    return pd.date_range(start, periods=week * 7 + revision, freq=freq).to_series()
 
 
 def is_weekend(time):

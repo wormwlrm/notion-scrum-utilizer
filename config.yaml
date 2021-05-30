@@ -1,6 +1,7 @@
 # 스크럼, 칸반 보드 관련 설정
 SCRUM:
   URL: 'https://www.notion.so/wormwlrm/bdac1d5eb89b433884c324b679ed7177?v=90e2216daf87410eb56dd319c4d82e33'
+  SPRINT_WEEK: 2
   STEPS:
     BACKLOG: '백로그'
     TODO: '시작 전'

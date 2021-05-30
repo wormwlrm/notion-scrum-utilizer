@@ -1,6 +1,4 @@
-from datetime import date, timedelta
 from dictdiffer import utils
-from notion.collection import NotionDate
 from src.Notion import Notion
 import pandas as pd
 import utils
@@ -33,11 +31,14 @@ class Scrum(Notion):
         duration = self.conf["CARD"]["DURATION"]
         status = self.conf["CARD"]["STATUS"]
         done = self.conf["SCRUM"]["STEPS"]["DONE"]
+        sprint_week = int(self.conf["SCRUM"]["SPRINT_WEEK"])
 
         cards = self.board.collection.get_rows()
         task_count = len(cards)
 
-        times = utils.get_time_series(utils.add_time(days=-7))
+        times = utils.get_time_series(
+            start=utils.add_time(days=-sprint_week * 7), week=sprint_week
+        )
         task_durations = [float(task_count) for _ in range(len(times))]
 
         for card in cards:
@@ -52,7 +53,7 @@ class Scrum(Notion):
             # 해당 태스크를 하루에 처리한 양
             task_per_day = float(1 / (task_duration.days + 1))
 
-            duration_count = 1
+            duration_count = 0
 
             subtracting_start_date = notion_date.start + pd.Timedelta(days=1)
             subtracting_finish_date = notion_date.end + pd.Timedelta(days=1)
@@ -61,14 +62,13 @@ class Scrum(Notion):
                 if time < subtracting_start_date:
                     continue
                 elif subtracting_start_date <= time <= subtracting_finish_date:
+                    duration_count += 1
                     task_durations[index] = (
                         task_durations[index] - task_per_day * duration_count
                     )
-                    duration_count += 1
                 else:
                     task_durations[index] = (
                         task_durations[index] - task_per_day * duration_count
                     )
-        print(task_durations)
 
         return {"task_count": task_count, "data": task_durations}

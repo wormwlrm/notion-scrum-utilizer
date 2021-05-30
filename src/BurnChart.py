@@ -2,28 +2,28 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import timedelta
 import utils
+from src.Notion import Notion
 
 
-class BurnChart:
-    periods = 0
+class BurnChart(Notion):
+    sprint_week = 1
     task_count = 0
     x_label = "Time Series"
     y_label = "Task Count"
     data = []
 
-    def __init__(
-        self, data, periods=7, x_label="Time Series", y_label="Task Count", task_count=0
-    ):
+    def __init__(self, data, x_label="Time Series", y_label="Task Count", task_count=0):
+        super().__init__()
         self.data = data
-        self.periods = periods
         self.x_label = x_label
         self.y_label = y_label
         self.task_count = task_count
+        self.sprint_week = int(self.conf["SCRUM"]["SPRINT_WEEK"])
 
     def get_ideal_series(self, times, task):
         series = []
 
-        task_per_day = float(task / (self.periods - 2))
+        task_per_day = float(task / (5 * self.sprint_week))
         remain_task = task
 
         for (index, time) in enumerate(times):
@@ -43,7 +43,9 @@ class BurnChart:
 
     def show(self):
         task_count = self.task_count
-        times = utils.get_time_series(utils.add_time(days=-7))
+        times = utils.get_time_series(
+            start=utils.add_time(days=self.sprint_week * -7), week=self.sprint_week
+        )
 
         fig, axes = plt.subplots(1)
         fig.autofmt_xdate()
@@ -70,4 +72,5 @@ class BurnChart:
         date_format = mdates.DateFormatter("%m-%d")
         axes.xaxis.set_major_formatter(date_format)
 
-        plt.show()
+        # plt.show()
+        plt.savefig("savefig_default.png")
