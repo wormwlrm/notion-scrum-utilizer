@@ -1,3 +1,3 @@
-from run_create_burnchart import run_create_burnchart
+from commands.run_create_burn_chart import run_create_burn_chart
 
-print(run_create_burnchart())
+print(run_create_burn_chart())

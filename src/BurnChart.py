@@ -41,7 +41,7 @@ class BurnChart(Notion):
 
         return series
 
-    def show(self):
+    def save_image(self):
         task_count = self.task_count
         times = utils.get_time_series(
             start=utils.add_time(days=self.sprint_week * -7), week=self.sprint_week

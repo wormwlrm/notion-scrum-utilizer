@@ -1,6 +1,8 @@
 # 스크럼, 칸반 보드 관련 설정
 SCRUM:
+  # 칸반 보드의 인라인 페이지 URL을 아래에 붙여넣습니다.
   URL: 'https://www.notion.so/wormwlrm/bdac1d5eb89b433884c324b679ed7177?v=90e2216daf87410eb56dd319c4d82e33'
+  # 스프린트 단위를 주 단위로 설정합니다.
   SPRINT_WEEK: 2
   STEPS:
     BACKLOG: '백로그'
@@ -11,21 +13,34 @@ SCRUM:
 
 # 태스크 카드 관련 프로퍼티 설정
 CARD:
+  # 태스크의 상태를 나타내는 프로퍼티의 이름을 설정합니다.
+  # 해당 프로퍼티는 속성 유형이 `선택`이어야 합니다.
   STATUS: '상태'
+  # 태스크의 작업 기간을 나타낼 프로퍼티 이름을 설정합니다.
+  # 해당 프로퍼티는 속성 유형이 `날짜`여야 합니다.
   DURATION: '작업기간'
 
 # 옵션 활성화 설정
 OPTIONS:
+  # 매주 월요일 자정에 BACKLOG 상태의 카드를 자동으로 TODO로 이동시킵니다.
+  # 해당 설정이 활성화되어 있으려면 BACKLOG 컬럼이 존재해야 합니다.
   BACKLOG_ENABLED: False
-  ARCHIVE_ENABLED: False
 
-  AUTO_ARCHIVE: True
-  # 매일 자정에 DOING 상태의 카드를 TODO로 이동시킴
+  # 매주 일요일 자정에 DONE 상태의 카드를 자동으로 ARCHIVE로 이동시킵니다.
+  # 해당 설정을 활성화하려면 ARCHIVE 컬럼이 존재해야 합니다.
+  AUTO_WEEKLY_ARCHIVE: False
+
+  # 매일 자정에 DOING 상태의 카드를 TODO로 이동시킵니다.
   AUTO_DAILY_RESET: True
-  # 매일 자정에 DOING 상태와 DONE 상태의 카드의 진행 기간을 기록함 
+
+  # 매일 자정에 DOING 상태와 DONE 상태의 카드의 진행 기간을 기록합니다.
   AUTO_UPDATE_DURATION: True
+
+  # 매주 일요일 자정에 번다운 차트를 슬랙으로 전송합니다.
+  AUTO_WEEKLY_BURN_CHART: True
 
 # 슬랙 관련 설정
 SLACK:
+  # 번다운 차트를 공유받을 슬랙 채널 이름입니다.
   CHANNEL_NAME: '#슬랙-봇-테스트'
 
