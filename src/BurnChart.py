@@ -1,10 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
-import numpy as np
-import pandas as pd
-from datetime import date, timedelta
-
-# from main import scrum
+from datetime import timedelta
+import utils
 
 
 class BurnChart:
@@ -12,23 +9,16 @@ class BurnChart:
     task_count = 0
     x_label = "Time Series"
     y_label = "Task Count"
+    data = []
 
     def __init__(
-        self, periods=7, x_label="Time Series", y_label="Task Count", task_count=0
+        self, data, periods=7, x_label="Time Series", y_label="Task Count", task_count=0
     ):
+        self.data = data
         self.periods = periods
         self.x_label = x_label
         self.y_label = y_label
         self.task_count = task_count
-
-    def get_time_series(self, day=date.today(), revision=1):
-        return pd.date_range(day, periods=self.periods + revision, freq="D").to_series()
-
-    def is_weekend(self, time):
-        return time.dayofweek in [5, 6]
-
-    def add_time(self, day=date.today(), days=0):
-        return day + timedelta(days)
 
     def get_ideal_series(self, times, task):
         series = []
@@ -41,9 +31,9 @@ class BurnChart:
                 series.append(remain_task)
                 continue
 
-            time = self.add_time(time, -1)
+            time = utils.add_time(time, -1)
 
-            if self.is_weekend(time):
+            if utils.is_weekend(time):
                 series.append(remain_task)
             else:
                 remain_task -= task_per_day
@@ -53,17 +43,20 @@ class BurnChart:
 
     def show(self):
         task_count = self.task_count
-        times = self.get_time_series(self.add_time(days=0))
+        times = utils.get_time_series(utils.add_time(days=-7))
 
         fig, axes = plt.subplots(1)
         fig.autofmt_xdate()
 
         plt.grid(True, axis="x", linestyle="--")
-        plt.plot(times, self.get_ideal_series(times=times, task=task_count))
+        plt.plot(
+            times, self.get_ideal_series(times=times, task=task_count), color="red"
+        )
+        plt.plot(times, self.data, color="blue")
 
         # 주말 영역은 색칠하기
         for time in times[:-1]:
-            if self.is_weekend(time):
+            if utils.is_weekend(time):
                 plt.axvspan(
                     time,
                     time + timedelta(days=1),
