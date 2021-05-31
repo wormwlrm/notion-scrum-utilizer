@@ -65,7 +65,7 @@ SCRUM:
   # (필수) 보드의 인라인 페이지 URL을 아래에 붙여넣습니다.
   URL: 'https://www.notion.so/wormwlrm/bdac1d5eb89b433884c324b679ed7177?v=90e2216daf87410eb56dd319c4d82e33'
   # (필수) 스프린트 단위를 주 단위로 설정합니다.
-  SPRINT_WEEK: 2
+  SPRINT_WEEK: 1
   # (필수) 태스크의 상태의 이름을 설정합니다.
   STEPS:
     # (선택) 다음 스프린트 때 진행할 태스크를 담는 컬럼입니다.
@@ -99,4 +99,5 @@ SLACK:
 
 ## 유의 사항
 
-- `notion-scrum-analytics`는 Github Actions의 Cron을 이용하고 있기 때문에, Cron에서 매주마다 아닌 N주마다 반복하는 로직은 아직 지원하지 않습니다.
+- `notion-scrum-analytics`는 Github Actions의 Cron을 이용해 반복적으로 실행됩니다. 매주가 아닌, Cron에서 매주가 아닌, N주마다 반복하는 로직은 아직 지원하지 않습니다.
+- Notion과 Slack의 토큰을 [리포지터리의 환경 변수로 지정](https://docs.github.com/en/actions/reference/encrypted-secrets)해야 합니다.  
