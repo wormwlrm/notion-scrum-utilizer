@@ -1,0 +1,28 @@
+name: weekly-cron
+
+on:
+  schedule:
+    # 월요일 0시
+    - cron: 0 15 * * 1
+  workflow_dispatch:
+    # 이 옵션을 설정해주어야 Github 웹에서 매뉴얼하게 실행 가능
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Run weekly.py
+      run: |
+        python weekly.py
+      env:
+        NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
