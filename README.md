@@ -1,6 +1,6 @@
-# notion-scrum-analytics
+# 🔍 notion-scrum-analytics
 
-🔍 Notion의 스크럼 보드 기능을 확장해주는 Python 애플리케이션입니다.
+- `notion-scrum-analytics`는 Notion의 스크럼 보드 기능을 확장해주는 Python 애플리케이션입니다.
 
 ## 미리보기
 
