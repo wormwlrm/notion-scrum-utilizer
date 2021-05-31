@@ -1,10 +1,9 @@
 import os
 from dotenv import load_dotenv
-import yaml
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
-from Config import Config
+from src.Config import Config
 
 
 class Slack(Config):
@@ -31,6 +30,10 @@ class Slack(Config):
                 channels=channel_name,
                 file=file,
             )
-            assert response.data["ok"] is True
-        except SlackApiError as e:
-            print(f"{e.response['error']}")
+
+            if not response["ok"]:
+                raise SlackApiError("슬랙 전송 실패")
+
+            return True
+        except SlackApiError:
+            return False
