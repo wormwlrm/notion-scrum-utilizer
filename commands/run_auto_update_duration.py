@@ -1,4 +1,4 @@
-from main import scrum
+from main import notion
 from datetime import date
 from notion.collection import NotionDate
 
@@ -8,15 +8,15 @@ def run_auto_update_duration():
 
 
 def update_done_card():
-    key = scrum.conf["CARD"]["STATUS"]
-    done = scrum.conf["SCRUM"]["STEPS"]["DONE"]
-    duration = scrum.conf["CARD"]["DURATION"]
+    key = notion.CARD_STATUS
+    done = notion.DONE
+    duration = notion.CARD_DURATION
 
     try:
         today = date.today()
 
-        for card_id in scrum.get_filtered_card_ids(key, done):
-            card = scrum.client.get_block(card_id)
+        for card_id in notion.get_filtered_card_ids(key, done):
+            card = notion.client.get_block(card_id)
             notion_date = card.get_property(duration)
 
             if not notion_date:
@@ -35,15 +35,15 @@ def update_done_card():
 
 
 def update_doing_card():
-    status = scrum.conf["CARD"]["STATUS"]
-    doing = scrum.conf["SCRUM"]["STEPS"]["DOING"]
-    duration = scrum.conf["CARD"]["DURATION"]
+    status = notion.CARD_STATUS
+    doing = notion.DOING
+    duration = notion.CARD_DURATION
 
     try:
         today = date.today()
 
-        for card_id in scrum.get_filtered_card_ids(status, doing):
-            card = scrum.client.get_block(card_id)
+        for card_id in notion.get_filtered_card_ids(status, doing):
+            card = notion.client.get_block(card_id)
 
             notion_date = card.get_property(duration)
             if (not notion_date) or (notion_date.start == None):

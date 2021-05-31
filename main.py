@@ -1,3 +1,5 @@
-from src.Scrum import Scrum
+from src.Notion import Notion
+from src.Slack import Slack
 
-scrum = Scrum()
+notion = Notion()
+slack = Slack()

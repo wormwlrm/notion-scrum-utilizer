@@ -1,14 +1,14 @@
-from main import scrum
+from main import notion
 
 
 def run_auto_daily_reset():
-    key = scrum.conf["CARD"]["STATUS"]
-    todo = scrum.conf["SCRUM"]["STEPS"]["TODO"]
-    doing = scrum.conf["SCRUM"]["STEPS"]["DOING"]
+    key = notion.CARD_STATUS
+    todo = notion.TODO
+    doing = notion.DOING
 
     try:
-        for card_id in scrum.get_filtered_card_ids(key, doing):
-            card = scrum.client.get_block(card_id)
+        for card_id in notion.get_filtered_card_ids(key, doing):
+            card = notion.client.get_block(card_id)
             setattr(card, key, todo)
         return True
     except:

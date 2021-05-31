@@ -1,3 +1,4 @@
-from commands.run_create_burn_chart import run_create_burn_chart
+from src.Config import Config
 
-print(run_create_burn_chart())
+config = Config()
+print(config)
