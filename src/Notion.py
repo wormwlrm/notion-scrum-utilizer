@@ -39,7 +39,7 @@ class Notion(Config):
 
         return card_ids
 
-    def get_analysis_data_of_week(self):
+    def get_analysis_data_of_week(self, direction):
         duration = self.CARD_DURATION
         status = self.CARD_STATUS
         done = self.DONE
@@ -63,6 +63,7 @@ class Notion(Config):
         times = utils.get_time_series(
             start=utils.add_time(days=-sprint_week * 7), week=sprint_week
         )
+
         task_durations = [float(total_count) for _ in range(len(times))]
 
         for card in cards:
@@ -99,5 +100,9 @@ class Notion(Config):
                     task_durations[index] = (
                         task_durations[index] - task_per_day * duration_count
                     )
+
+        if direction == "up":
+            maximum = max(task_durations)
+            task_durations = list(map(lambda x: maximum - x, task_durations))
 
         return {"total_count": total_count, "data": task_durations}

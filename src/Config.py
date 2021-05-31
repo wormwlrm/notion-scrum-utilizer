@@ -36,6 +36,7 @@ class Config:
         self.UPDATE_DURATION = str_to_bool(options["UPDATE_DURATION"])
         self.WEEKLY_BURN_CHART = str_to_bool(options["WEEKLY_BURN_CHART"])
         self.STORY_POINTS_ENABLED = str_to_bool(options["STORY_POINTS_ENABLED"])
+        self.BURN_CHART_TYPE = options["BURN_CHART_TYPE"]
 
     def set_slack_config(self, slack):
         self.SLACK_CHANNEL_NAME = slack["CHANNEL_NAME"]

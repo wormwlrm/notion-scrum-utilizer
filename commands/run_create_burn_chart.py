@@ -7,14 +7,17 @@ def run_send_to_slack():
 
 
 def run_create_burn_chart():
-    result = notion.get_analysis_data_of_week()
+    direction = notion.BURN_CHART_TYPE
+    y_label = "Story Points" if notion.STORY_POINTS_ENABLED else "Task Counts"
+
+    result = notion.get_analysis_data_of_week(direction=direction)
 
     burn_chart = BurnChart()
-
-    y_label = "Story Points" if notion.STORY_POINTS_ENABLED else "Task Count"
-
     burn_chart.create_image(
-        total_count=result["total_count"], data=result["data"], y_label=y_label
+        total_count=result["total_count"],
+        data=result["data"],
+        y_label=y_label,
+        direction=direction,
     )
 
     run_send_to_slack()

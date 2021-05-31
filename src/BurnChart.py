@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import timedelta
+
+from numpy import maximum
 import utils
 from src.Config import Config
 
@@ -9,7 +11,7 @@ class BurnChart(Config):
     def __init__(self):
         super().__init__()
 
-    def get_ideal_series(self, times, task):
+    def get_ideal_series(self, times, task, direction):
         series = []
         weekday = 5
 
@@ -29,11 +31,16 @@ class BurnChart(Config):
                 remain_task -= task_per_day
                 series.append(remain_task)
 
+        if direction == "up":
+            maximum = max(series)
+            return list(map(lambda x: maximum - x, series))
+
         return series
 
     def create_image(
         self,
         data,
+        direction,
         total_count=0,
         x_label="Time Series",
         y_label="Task Count",
@@ -50,7 +57,7 @@ class BurnChart(Config):
 
         plt.plot(
             times,
-            self.get_ideal_series(times=times, task=total_count),
+            self.get_ideal_series(times=times, task=total_count, direction=direction),
             color="red",
             alpha=0.7,
             label="Ideal Chart",

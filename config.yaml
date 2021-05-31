@@ -5,6 +5,7 @@ OPTIONS:
   UPDATE_DURATION: True
   WEEKLY_BURN_CHART: True
   STORY_POINTS_ENABLED: True
+  BURN_CHART_TYPE: 'down'
 
 SCRUM:
   URL: 'https://www.notion.so/wormwlrm/bdac1d5eb89b433884c324b679ed7177?v=90e2216daf87410eb56dd319c4d82e33'
