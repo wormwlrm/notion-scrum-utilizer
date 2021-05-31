@@ -2,28 +2,18 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import timedelta
 import utils
-from src.Notion import Notion
+from src.Config import Config
 
 
-class BurnChart(Notion):
-    sprint_week = 1
-    task_count = 0
-    x_label = "Time Series"
-    y_label = "Task Count"
-    data = []
-
-    def __init__(self, data, x_label="Time Series", y_label="Task Count", task_count=0):
+class BurnChart(Config):
+    def __init__(self):
         super().__init__()
-        self.data = data
-        self.x_label = x_label
-        self.y_label = y_label
-        self.task_count = task_count
-        self.sprint_week = self.SPRINT_WEEK
 
     def get_ideal_series(self, times, task):
         series = []
+        weekday = 5
 
-        task_per_day = float(task / (5 * self.sprint_week))
+        task_per_day = float(task / (weekday * self.SPRINT_WEEK))
         remain_task = task
 
         for (index, time) in enumerate(times):
@@ -41,20 +31,48 @@ class BurnChart(Notion):
 
         return series
 
-    def save_image(self):
-        task_count = self.task_count
+    def create_image(
+        self,
+        data,
+        task_count=0,
+        x_label="Time Series",
+        y_label="Task Count",
+    ):
+        task_count = task_count
         times = utils.get_time_series(
-            start=utils.add_time(days=self.sprint_week * -7), week=self.sprint_week
+            start=utils.add_time(days=self.SPRINT_WEEK * -7), week=self.SPRINT_WEEK
         )
 
         fig, axes = plt.subplots(1)
         fig.autofmt_xdate()
 
         plt.grid(True, axis="x", linestyle="--")
+
         plt.plot(
-            times, self.get_ideal_series(times=times, task=task_count), color="red"
+            times,
+            self.get_ideal_series(times=times, task=task_count),
+            color="red",
+            alpha=0.7,
+            label="Ideal Chart",
         )
-        plt.plot(times, self.data, color="blue")
+
+        plt.plot(
+            times,
+            data,
+            color="grey",
+            marker=".",
+            alpha=0.3,
+        )
+        plt.plot(
+            times,
+            data,
+            drawstyle="steps",
+            color="blue",
+            alpha=0.7,
+            label="Actual Chart",
+        )
+
+        plt.legend()
 
         # 주말 영역은 색칠하기
         for time in times[:-1]:
@@ -66,8 +84,8 @@ class BurnChart(Notion):
                     alpha=0.1,
                 )
 
-        plt.xlabel(self.x_label)
-        plt.ylabel(self.y_label)
+        plt.xlabel(x_label)
+        plt.ylabel(y_label)
 
         date_format = mdates.DateFormatter("%m-%d")
         axes.xaxis.set_major_formatter(date_format)
