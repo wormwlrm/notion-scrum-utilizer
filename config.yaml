@@ -4,11 +4,11 @@ OPTIONS:
   DAILY_RESET: True
   UPDATE_DURATION: True
   WEEKLY_BURN_CHART: True
-  STORY_POINT_ENABLED: False
+  STORY_POINTS_ENABLED: True
 
 SCRUM:
   URL: 'https://www.notion.so/wormwlrm/bdac1d5eb89b433884c324b679ed7177?v=90e2216daf87410eb56dd319c4d82e33'
-  SPRINT_WEEK: 2
+  SPRINT_WEEK: 1
   STEPS:
     BACKLOG: '백로그'
     TODO: '시작 전'
@@ -19,7 +19,7 @@ SCRUM:
 CARD:
   STATUS: '상태'
   DURATION: '작업기간'
-  STORY_POINTS: '스토리포인트'
+  STORY_POINTS: '스토리 포인트'
 
 SLACK:
   CHANNEL_NAME: '#슬랙-봇-테스트'

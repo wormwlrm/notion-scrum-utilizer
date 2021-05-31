@@ -27,6 +27,7 @@ class Config:
     def set_card_config(self, card):
         self.CARD_STATUS = card["STATUS"]
         self.CARD_DURATION = card["DURATION"]
+        self.CARD_STORY_POINTS = card["STORY_POINTS"]
 
     def set_options_config(self, options):
         self.BACKLOG_ENABLED = str_to_bool(options["BACKLOG_ENABLED"])
@@ -34,6 +35,7 @@ class Config:
         self.DAILY_RESET = str_to_bool(options["DAILY_RESET"])
         self.UPDATE_DURATION = str_to_bool(options["UPDATE_DURATION"])
         self.WEEKLY_BURN_CHART = str_to_bool(options["WEEKLY_BURN_CHART"])
+        self.STORY_POINTS_ENABLED = str_to_bool(options["STORY_POINTS_ENABLED"])
 
     def set_slack_config(self, slack):
         self.SLACK_CHANNEL_NAME = slack["CHANNEL_NAME"]

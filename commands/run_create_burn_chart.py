@@ -11,6 +11,10 @@ def run_create_burn_chart():
 
     burn_chart = BurnChart()
 
-    burn_chart.create_image(task_count=result["task_count"], data=result["data"])
+    y_label = "Story Points" if notion.STORY_POINTS_ENABLED else "Task Count"
+
+    burn_chart.create_image(
+        total_count=result["total_count"], data=result["data"], y_label=y_label
+    )
 
     run_send_to_slack()

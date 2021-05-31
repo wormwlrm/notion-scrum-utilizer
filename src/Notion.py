@@ -44,14 +44,26 @@ class Notion(Config):
         status = self.CARD_STATUS
         done = self.DONE
         sprint_week = self.SPRINT_WEEK
+        story_points_enabled = self.STORY_POINTS_ENABLED
+        story_points = self.CARD_STORY_POINTS
 
         cards = self.board.collection.get_rows()
-        task_count = len(cards)
+
+        if story_points_enabled:
+            total_count = 0
+
+            for card in cards:
+                current_story_point = card.get_property(story_points)
+                if current_story_point == None:
+                    continue
+                total_count += current_story_point
+        else:
+            total_count = len(cards)
 
         times = utils.get_time_series(
             start=utils.add_time(days=-sprint_week * 7), week=sprint_week
         )
-        task_durations = [float(task_count) for _ in range(len(times))]
+        task_durations = [float(total_count) for _ in range(len(times))]
 
         for card in cards:
             if card.get_property(status) != done:
@@ -62,8 +74,13 @@ class Notion(Config):
             # 해당 태스크 끝내는 데 걸린 시간
             task_duration = notion_date.end - notion_date.start
 
+            if story_points_enabled:
+                amount_of_task = card.get_property(story_points)
+            else:
+                amount_of_task = 1
+
             # 해당 태스크를 하루에 처리한 양
-            task_per_day = float(1 / (task_duration.days + 1))
+            task_per_day = float(amount_of_task / (task_duration.days + 1))
 
             duration_count = 0
 
@@ -83,4 +100,4 @@ class Notion(Config):
                         task_durations[index] - task_per_day * duration_count
                     )
 
-        return {"task_count": task_count, "data": task_durations}
+        return {"total_count": total_count, "data": task_durations}

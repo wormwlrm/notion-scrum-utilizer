@@ -34,11 +34,11 @@ class BurnChart(Config):
     def create_image(
         self,
         data,
-        task_count=0,
+        total_count=0,
         x_label="Time Series",
         y_label="Task Count",
     ):
-        task_count = task_count
+        total_count = total_count
         times = utils.get_time_series(
             start=utils.add_time(days=self.SPRINT_WEEK * -7), week=self.SPRINT_WEEK
         )
@@ -50,7 +50,7 @@ class BurnChart(Config):
 
         plt.plot(
             times,
-            self.get_ideal_series(times=times, task=task_count),
+            self.get_ideal_series(times=times, task=total_count),
             color="red",
             alpha=0.7,
             label="Ideal Chart",
