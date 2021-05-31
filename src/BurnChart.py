@@ -18,7 +18,7 @@ class BurnChart(Notion):
         self.x_label = x_label
         self.y_label = y_label
         self.task_count = task_count
-        self.sprint_week = int(self.conf["SCRUM"]["SPRINT_WEEK"])
+        self.sprint_week = self.SPRINT_WEEK
 
     def get_ideal_series(self, times, task):
         series = []

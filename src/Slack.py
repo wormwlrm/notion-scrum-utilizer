@@ -4,19 +4,17 @@ import yaml
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
+from Config import Config
 
-class Slack:
+
+class Slack(Config):
     token = None
     conf = None
     client = None
 
     def __init__(self):
-        self.set_config()
+        super().__init__()
         self.set_token()
-
-    def set_config(self):
-        with open("config.yaml") as file:
-            self.conf = yaml.load(file, Loader=yaml.BaseLoader)
 
     def set_token(self):
         if os.path.exists(".env"):
@@ -26,7 +24,7 @@ class Slack:
         self.client = WebClient(token=self.token)
 
     def post_image(self, file):
-        channel_name = self.conf["SLACK"]["CHANNEL_NAME"]
+        channel_name = self.SLACK_CHANNEL_NAME
 
         try:
             response = self.client.files_upload(
