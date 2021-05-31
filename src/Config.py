@@ -30,10 +30,10 @@ class Config:
 
     def set_options_config(self, options):
         self.BACKLOG_ENABLED = str_to_bool(options["BACKLOG_ENABLED"])
-        self.AUTO_WEEKLY_ARCHIVE = str_to_bool(options["AUTO_WEEKLY_ARCHIVE"])
-        self.AUTO_DAILY_RESET = str_to_bool(options["AUTO_DAILY_RESET"])
-        self.AUTO_UPDATE_DURATION = str_to_bool(options["AUTO_UPDATE_DURATION"])
-        self.AUTO_WEEKLY_BURN_CHART = str_to_bool(options["AUTO_WEEKLY_BURN_CHART"])
+        self.WEEKLY_ARCHIVE = str_to_bool(options["WEEKLY_ARCHIVE"])
+        self.DAILY_RESET = str_to_bool(options["DAILY_RESET"])
+        self.UPDATE_DURATION = str_to_bool(options["UPDATE_DURATION"])
+        self.WEEKLY_BURN_CHART = str_to_bool(options["WEEKLY_BURN_CHART"])
 
     def set_slack_config(self, slack):
         self.SLACK_CHANNEL_NAME = slack["CHANNEL_NAME"]

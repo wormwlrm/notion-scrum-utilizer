@@ -3,7 +3,7 @@ from datetime import date
 from notion.collection import NotionDate
 
 
-def run_auto_update_duration():
+def run_update_duration():
     return update_done_card() and update_doing_card()
 
 

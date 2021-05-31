@@ -10,13 +10,13 @@ OPTIONS:
   WEEKLY_ARCHIVE: True
 
   # 매일 자정에 DOING 상태의 카드를 TODO로 이동시킵니다.
-  AUTO_DAILY_RESET: True
+  DAILY_RESET: True
 
   # 매일 자정에 DOING 상태와 DONE 상태의 카드의 진행 기간을 기록합니다.
-  AUTO_UPDATE_DURATION: True
+  UPDATE_DURATION: True
 
   # 매주 일요일 자정에 번다운 차트를 슬랙으로 전송합니다.
-  AUTO_WEEKLY_BURN_CHART: True
+  WEEKLY_BURN_CHART: True
 
 
 # 스크럼 & 칸반 보드 관련 설정
