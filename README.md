@@ -13,17 +13,35 @@ _Notion의 스크럼 보드에 기록된 태스크(유저 스토리) 카드들�
 - [x] **일간 상태 초기화**
   - 매일 자정에 DOING 상태의 카드를 TODO로 이동시킵니다.
 
+<center>
+  <img src="img/auto-reset.gif" width="300">
+</center>
+
 - [x] **일간 진행 기간 기록 자동화**
   - 매일 자정에 DOING 상태와 DONE 상태의 카드의 진행 기간을 기록합니다.
+
+<center>
+  <img src="img/auto-duration.gif" width="300">
+</center>
 
 - [x] **번다운, 번업 차트 활성화**
   - 매주 월요일 자정에 지난 스프린트 기간동안 태스크 진행 현황을 [번다운 차트](https://ko.wikipedia.org/wiki/%EB%B2%88_%EB%8B%A4%EC%9A%B4_%EC%B0%A8%ED%8A%B8)또는 번업 차트로 시각화하고, 이를 Slack으로 전송합니다.
   - 태스크 진행 현황은 기본적으로 태스크의 갯수로 판단되며, 각 태스크 별 가중치가 필요할 경우에는 [스토리 포인트](https://en.wikipedia.org/wiki/Fibonacci_scale_(agile))를 할당할 수 있습니다.
 
+<center>
+  <img src="img/burndown.gif" width="300">
+  <img src="img/burnup.gif" width="300">
+</center>
+
 - [x] **자동 백로그 활성화, 자동 아카이브 활성화**
   - 매주 월요일 자정에 BACKLOG 상태의 카드를 자동으로 TODO로 이동시킵니다.
   - 매주 월요일 자정에 DONE 상태의 카드를 자동으로 ARCHIVE로 이동시킵니다.
-  
+
+<center>
+  <img src="img/auto-archive.gif" width="300">
+  <img src="img/auto-backlog.gif" width="300">
+</center>
+
 ## 사용 방법
 
 `notion-scrum-analytics` 에서 기본적으로 지원하는 기능은 다음과 같으며, `config.yaml` 파일을 수정하여 해당 설정을 커스터마이징할 수 있습니다.
