@@ -1,6 +1,6 @@
-# 🔍 notion-scrum-analytics
+# 🔍 notion-scrum-utilizer
 
-- `notion-scrum-analytics`는 Notion의 스크럼 보드 기능을 확장해주는 Python 애플리케이션입니다.
+- `notion-scrum-utilizer`는 Notion의 스크럼 보드 기능을 확장해주는 Python 애플리케이션입니다.
 
 ## 미리보기
 
@@ -48,7 +48,7 @@ _Notion의 스크럼 보드에 기록된 태스크(유저 스토리) 카드들�
 
 ## 사용 방법
 
-`notion-scrum-analytics` 에서 기본적으로 지원하는 기능은 다음과 같으며, `config.yaml` 파일을 수정하여 해당 설정을 커스터마이징할 수 있습니다.
+`notion-scrum-utilizer` 에서 기본적으로 지원하는 기능은 다음과 같으며, `config.yaml` 파일을 수정하여 해당 설정을 커스터마이징할 수 있습니다.
 
 ```yml
 # 옵션 활성화 설정
@@ -126,5 +126,5 @@ SLACK:
 
 ## 유의 사항
 
-- `notion-scrum-analytics`는 Github Actions의 Cron을 이용해 반복적으로 실행됩니다. 매주가 아닌, Cron에서 매주가 아닌, N주마다 반복하는 로직은 아직 지원하지 않습니다.
+- `notion-scrum-utilizer`는 Github Actions의 Cron을 이용해 반복적으로 실행됩니다. 매주가 아닌, Cron에서 매주가 아닌, N주마다 반복하는 로직은 아직 지원하지 않습니다.
 - Notion과 Slack의 토큰을 [리포지터리의 환경 변수로 지정](https://docs.github.com/en/actions/reference/encrypted-secrets)해야 합니다.  
