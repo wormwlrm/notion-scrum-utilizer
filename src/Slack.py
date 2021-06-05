@@ -8,7 +8,6 @@ from src.Config import Config
 
 class Slack(Config):
     token = None
-    conf = None
     client = None
 
     def __init__(self):

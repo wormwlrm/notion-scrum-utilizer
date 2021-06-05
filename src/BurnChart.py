@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import timedelta
 
-from numpy import maximum
 import utils
 from src.Config import Config
 
