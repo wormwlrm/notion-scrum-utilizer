@@ -4,7 +4,7 @@
 
 ## 미리보기
 
-![번다운 차트](burnchart.png)
+![번다운 차트](img/burn.png)
 
 _Notion의 스크럼 보드에 기록된 태스크(유저 스토리) 카드들의 진행 현황을 자동으로 기록하고, 이를 기반으로 조직의 스프린트 별 태스크 진행 현황을 보기 쉽게 확인할 수 있습니다._
 
@@ -126,5 +126,5 @@ SLACK:
 
 ## 유의 사항
 
-- `notion-scrum-utilizer`는 Github Actions의 Cron을 이용해 반복적으로 실행됩니다. 매주가 아닌, Cron에서 매주가 아닌, N주마다 반복하는 로직은 아직 지원하지 않습니다.
+- `notion-scrum-utilizer`는 Github Actions의 Cron을 이용해 반복적으로 실행됩니다. 매주가 아닌, N주마다 반복하는 로직은 Cron 스케쥴을 이용해 별도로 등록해야 합니다.
 - Notion과 Slack의 토큰을 [리포지터리의 환경 변수로 지정](https://docs.github.com/en/actions/reference/encrypted-secrets)해야 합니다.  
