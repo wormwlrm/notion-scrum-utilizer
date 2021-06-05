@@ -1,5 +1,9 @@
 # 🔍 notion-scrum-utilizer
 
+<p align="center">
+  <img src="img/logo.png" width="300">
+</p>
+
 - `notion-scrum-utilizer`는 Notion의 스크럼 보드 기능을 확장해주는 Python 애플리케이션입니다.
 
 ## 미리보기
