@@ -129,5 +129,5 @@ dmypy.json
 .pyre/
 
 .idea
-# *.ipynb
+*.ipynb
 .DS_Store
